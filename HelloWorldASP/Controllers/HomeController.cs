@@ -11,20 +11,35 @@ namespace HelloWorldASP.Controllers
 {
     public class HomeController : Controller
     {
-
+        
         [HttpGet]
         public IActionResult Index()
         {
-            // ViewBag.Name = "Marry";
-            ViewBag.FV = 99999.99;
+            ViewBag.Fifteen = 0.0M;
+            ViewBag.Twenty = 0.0M;
+            ViewBag.TwentyFive = 0.0M;
             return View();
         }
+        
 
         [HttpPost]
-        public IActionResult Index(FutureValueModel model)
+        public IActionResult Index(Calculator calc)
         {
-            ViewBag.FV = model.CalculateFutureValue();
-            return View(model);
+            // If the state is valid, calculate the discount amount and the total.
+            // Otherwise, set them to 0.
+            if (ModelState.IsValid)
+            {
+                ViewBag.Fifteen = calc.CalculateTip(15);
+                ViewBag.Twenty = calc.CalculateTip(20);
+                ViewBag.TwentyFive = calc.CalculateTip(25);
+            }
+            else
+            {
+                ViewBag.Fifteen = 0.0M;
+                ViewBag.Twenty = 0.0M;
+                ViewBag.TwentyFive = 0.0M;
+            }
+            return View(calc);
         }
     }
 }
