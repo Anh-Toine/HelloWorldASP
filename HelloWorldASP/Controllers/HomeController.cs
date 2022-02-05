@@ -15,9 +15,14 @@ namespace HelloWorldASP.Controllers
         [HttpGet]
         public IActionResult Index()
         {
+<<<<<<< HEAD
             ViewBag.Fifteen = 0.0M;
             ViewBag.Twenty = 0.0M;
             ViewBag.TwentyFive = 0.0M;
+=======
+            ViewBag.Discount = 0.0;
+            ViewBag.Total = 0.0;
+>>>>>>> 4122eda (First commit)
             return View();
         }
         
@@ -29,6 +34,7 @@ namespace HelloWorldASP.Controllers
             // Otherwise, set them to 0.
             if (ModelState.IsValid)
             {
+<<<<<<< HEAD
                 ViewBag.Fifteen = calc.CalculateTip(15);
                 ViewBag.Twenty = calc.CalculateTip(20);
                 ViewBag.TwentyFive = calc.CalculateTip(25);
@@ -38,6 +44,15 @@ namespace HelloWorldASP.Controllers
                 ViewBag.Fifteen = 0.0M;
                 ViewBag.Twenty = 0.0M;
                 ViewBag.TwentyFive = 0.0M;
+=======
+                ViewBag.Discount = calc.DiscountAmountCalculate();
+                ViewBag.Total = calc.TotalCalculate();
+            }
+            else
+            {
+                ViewBag.Discount = 0.0;
+                ViewBag.Total = 0.0;
+>>>>>>> 4122eda (First commit)
             }
             return View(calc);
         }

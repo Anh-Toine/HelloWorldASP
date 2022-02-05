@@ -5,6 +5,7 @@ namespace FutureValue.Models
 {
     public class Calculator
     {
+<<<<<<< HEAD
         /* Setters and Getters for the MealCost */
 
         // Error message in case user forgets to enter their cost of meal
@@ -32,6 +33,35 @@ namespace FutureValue.Models
                     break;
             }
             return tip;
+=======
+        /* Setters and Getters for the Subtotal, and Discountpercent */
+
+        // Error message in case user forgets to enter their subtotal
+        [Required(ErrorMessage = "Please enter a subtotal")]
+        // Error message in case user enters an invalid value
+        [Range(1,double.PositiveInfinity, ErrorMessage = "Subtotal must be a valid number greater than 0")]
+        public decimal? Subtotal { get; set; } // (*)
+
+        // Error message in case user forgets to enter their discount percent
+        [Required(ErrorMessage = "Please enter a discount percent")]
+        // Error message in case user enters an invalid value
+        [Range(0,100, ErrorMessage = "Discount percent must be a valid number from 0 to 100")]
+        public int? DiscountPercent { get; set; } // (*)
+     
+        public decimal? DiscountAmountCalculate() // (*)
+        {
+
+            decimal? amount = Subtotal * DiscountPercent / 100; // (*)
+
+            return amount;
+        }
+
+        public decimal? TotalCalculate() // (*)
+        {
+            decimal? total = Subtotal - DiscountAmountCalculate(); // (*)
+
+            return total;
+>>>>>>> 4122eda (First commit)
         }
 
     }
